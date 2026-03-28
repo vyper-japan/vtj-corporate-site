@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ | 株式会社VYPER JAPAN</title>
+  <meta name="description" content="株式会社VYPER JAPANへのお問い合わせ。ブランドの日本展開やEC運営に関するご相談はお気軽にどうぞ。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VYPER JAPAN">
+  <meta property="og:title" content="お問い合わせ | 株式会社VYPER JAPAN">
+  <meta property="og:url" content="https://vtj.co.jp/contact.html">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://vtj.co.jp/contact.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/archive" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --body: #4a4a4a;
+      --line: #e5e7eb;
+      --line-strong: #d7dce1;
+      --accent: #ec483e;
+      --accent-dark: #cf392f;
+      --shadow-soft: 0 12px 30px rgba(26, 26, 26, 0.05);
+      --container: min(640px, calc(100vw - 32px));
+      --header-height: 80px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--body);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea { font: inherit; }
+    .container { width: var(--container); margin: 0 auto; }
+    h1, h2, .eyebrow { font-family: 'Archive', 'Archivo', sans-serif; }
+    h1 { margin: 0; color: var(--text); line-height: 1.2; letter-spacing: -0.03em; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+    p { margin: 0; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 24px rgba(26,26,26,0.08);
+      border-color: rgba(26,26,26,0.06);
+      background: rgba(255,255,255,0.95);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: var(--header-height); gap: 20px;
+      width: min(1140px, calc(100vw - 32px)); margin: 0 auto;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 16px; }
+    .brand img { width: 132px; height: auto; }
+    .nav-toggle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px; padding: 0;
+      border: 1px solid var(--line); border-radius: 999px;
+      background: var(--surface); color: var(--text); cursor: pointer;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+      display: block; width: 18px; height: 2px; border-radius: 999px;
+      background: currentColor; content: ""; transition: transform 0.2s ease;
+    }
+    .nav-toggle span::before { transform: translateY(-6px); }
+    .nav-toggle span::after { transform: translateY(4px); }
+    .site-nav {
+      position: fixed; top: calc(var(--header-height) + 12px); right: 16px; left: 16px;
+      padding: 16px; border: 1px solid var(--line); border-radius: 20px;
+      background: rgba(255,255,255,0.98); box-shadow: 0 18px 50px rgba(26,26,26,0.08);
+      opacity: 0; visibility: hidden; transform: translateY(-10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .site-nav ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .site-nav a { display: block; padding: 14px 16px; border-radius: 14px; color: var(--text); font-weight: 600; }
+    .site-nav a:hover { background: var(--bg-alt); }
+    body.menu-open .site-nav { opacity: 1; visibility: visible; transform: translateY(0); }
+    body.menu-open .nav-toggle span { background: transparent; }
+    body.menu-open .nav-toggle span::before { transform: rotate(45deg); }
+    body.menu-open .nav-toggle span::after { transform: rotate(-45deg) translateY(-1px); }
+
+    .hero {
+      padding: 64px 0 32px;
+      background: radial-gradient(circle at top left, rgba(236,72,62,0.08), transparent 34%), linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 14px;
+      color: var(--accent); font-size: 0.84rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .lead { font-size: 0.95rem; margin-top: 12px; }
+
+    .content { padding: 0 0 64px; }
+    .form-card {
+      margin-top: 32px; padding: 28px;
+      border: 1px solid var(--line); border-radius: 24px;
+      background: var(--surface); box-shadow: var(--shadow-soft);
+    }
+    .contact-form { display: grid; gap: 18px; }
+    .form-field { display: grid; gap: 6px; }
+    .form-field label { color: var(--text); font-weight: 700; font-size: 0.9rem; }
+    .form-field input, .form-field textarea {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid var(--line-strong); border-radius: 14px;
+      background: #fff; color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-field input:focus, .form-field textarea:focus {
+      border-color: rgba(236,72,62,0.6);
+      box-shadow: 0 0 0 4px rgba(236,72,62,0.12);
+      outline: none;
+    }
+    .form-field textarea { min-height: 140px; resize: vertical; }
+    .form-note { font-size: 0.85rem; color: var(--body); }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 48px; padding: 0 28px; border-radius: 999px;
+      border: 1px solid transparent; font-weight: 700; cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .button:hover { transform: translateY(-1px); }
+    .button-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 14px 28px rgba(236,72,62,0.22);
+    }
+    .button-primary:hover { background: var(--accent-dark); }
+
+    .site-footer {
+      padding: 40px 0 24px; color: rgba(255,255,255,0.78); background: #1a1a1a;
+    }
+    .footer-links {
+      display: flex; flex-wrap: wrap; gap: 14px 32px; justify-content: center;
+    }
+    .footer-links a { color: rgba(255,255,255,0.72); }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex; justify-content: center; align-items: center;
+      padding-top: 20px; margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.92rem;
+    }
+
+    @media (min-width: 980px) {
+      .nav-toggle { display: none; }
+      .site-nav {
+        position: static; padding: 0; border: none; border-radius: 0;
+        background: transparent; box-shadow: none;
+        opacity: 1; visibility: visible; transform: none;
+      }
+      .site-nav ul { display: flex; align-items: center; gap: 6px; }
+      .site-nav a { padding: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="VYPER JAPAN">
+        <img src="https://cdn.prod.website-files.com/6061972357274a19ed887ecf/6061972357274a9cb6888020_vyper%20black.png" alt="VYPER JAPAN">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span></button>
+      <nav class="site-nav" id="site-nav">
+        <ul>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="index.html#brands">取扱ブランド</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Contact</div>
+        <h1>お問い合わせ</h1>
+        <p class="lead">ブランドの日本展開やEC運営に関するご相談はお気軽にどうぞ。</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="form-card">
+          <form class="contact-form" action="#" method="post" onsubmit="return handleSubmit(event)">
+            <div class="form-field">
+              <label for="company">会社名</label>
+              <input type="text" id="company" name="company" placeholder="例: 株式会社ABC">
+            </div>
+            <div class="form-field">
+              <label for="name">お名前 <span style="color:var(--accent);">*</span></label>
+              <input type="text" id="name" name="name" required placeholder="例: 山田 太郎">
+            </div>
+            <div class="form-field">
+              <label for="email">メールアドレス <span style="color:var(--accent);">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="例: taro@example.com">
+            </div>
+            <div class="form-field">
+              <label for="phone">電話番号</label>
+              <input type="tel" id="phone" name="phone" placeholder="例: 03-1234-5678">
+            </div>
+            <div class="form-field">
+              <label for="message">お問い合わせ内容 <span style="color:var(--accent);">*</span></label>
+              <textarea id="message" name="message" required placeholder="ご相談内容をご記入ください。"></textarea>
+            </div>
+            <p class="form-note">* は必須項目です。送信いただいた内容は担当者より折り返しご連絡いたします。</p>
+            <div>
+              <button type="submit" class="button button-primary">送信する</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html#services">サービス</a>
+        <a href="index.html#brands">取扱ブランド</a>
+        <a href="company.html">会社概要</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 株式会社VYPER JAPAN. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body, navToggle = document.querySelector(".nav-toggle"),
+      header = document.querySelector(".site-header");
+    navToggle.addEventListener("click", () => {
+      const isOpen = body.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    updateHeader(); window.addEventListener("scroll", updateHeader, { passive: true });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      alert("お問い合わせありがとうございます。担当者より折り返しご連絡いたします。");
+      form.reset();
+      return false;
+    }
+  </script>
+</body>
+</html>

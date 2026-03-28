@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人情報保護方針 | 株式会社VYPER JAPAN</title>
+  <meta name="description" content="株式会社VYPER JAPANの個人情報保護方針。個人情報の取得、利用目的、第三者提供、安全管理措置、開示等の請求、お問い合わせ窓口についてご案内します。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VYPER JAPAN">
+  <meta property="og:title" content="個人情報保護方針 | 株式会社VYPER JAPAN">
+  <meta property="og:description" content="株式会社VYPER JAPANの個人情報保護方針および個人情報の取扱いについて掲載しています。">
+  <meta property="og:url" content="https://vtj.co.jp/privacy.html">
+  <meta property="og:image" content="https://cdn.prod.website-files.com/6061972357274a19ed887ecf/6061972357274a9cb6888020_vyper%20black.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://vtj.co.jp/privacy.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/archive" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --body: #4a4a4a;
+      --line: #e5e7eb;
+      --line-strong: #d7dce1;
+      --accent: #ec483e;
+      --accent-dark: #cf392f;
+      --shadow: 0 18px 50px rgba(26, 26, 26, 0.08);
+      --shadow-soft: 0 12px 30px rgba(26, 26, 26, 0.05);
+      --radius: 24px;
+      --container: min(1040px, calc(100vw - 32px));
+      --header-height: 80px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--body);
+      background: var(--bg);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+      border-color: rgba(26, 26, 26, 0.06);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-height);
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 132px;
+      height: auto;
+    }
+
+    .brand-copy {
+      display: none;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: #707070;
+      font-size: 0.76rem;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      content: "";
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle span::before {
+      transform: translateY(-6px);
+    }
+
+    .nav-toggle span::after {
+      transform: translateY(4px);
+    }
+
+    .site-nav {
+      position: fixed;
+      top: calc(var(--header-height) + 12px);
+      right: 16px;
+      left: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .site-nav ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      background: var(--bg-alt);
+      outline: none;
+    }
+
+    body.menu-open .site-nav {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    body.menu-open .nav-toggle span {
+      background: transparent;
+    }
+
+    body.menu-open .nav-toggle span::before {
+      transform: rotate(45deg);
+    }
+
+    body.menu-open .nav-toggle span::after {
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    .hero {
+      padding: 84px 0 44px;
+      background:
+        radial-gradient(circle at top left, rgba(236, 72, 62, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    h1, h2, .eyebrow {
+      font-family: 'Archive', 'Archivo', sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 4vw, 2rem);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      font-size: 1.04rem;
+    }
+
+    .content {
+      padding: 0 0 88px;
+    }
+
+    .policy-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .policy-card,
+    .contact-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .policy-card h2 {
+      margin-bottom: 14px;
+    }
+
+    .policy-card ul {
+      margin: 14px 0 0;
+      padding-left: 20px;
+    }
+
+    .policy-card li + li {
+      margin-top: 8px;
+    }
+
+    .contact-card {
+      margin-top: 24px;
+      background: var(--bg-alt);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .site-footer {
+      padding: 52px 0 28px;
+      color: rgba(255, 255, 255, 0.78);
+      background: #1a1a1a;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .footer-brand img {
+      width: 132px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p,
+    .footer-links a,
+    .footer-social a,
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-links,
+    .footer-social,
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+    }
+
+    .footer-links a:hover,
+    .footer-social a:hover,
+    .footer-bottom a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.92rem;
+    }
+
+    @media (min-width: 720px) {
+      .brand-copy {
+        display: block;
+      }
+
+      .policy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 980px) {
+      .nav-toggle {
+        display: none;
+      }
+
+      .site-nav {
+        position: static;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+
+      .site-nav ul {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .site-nav a {
+        padding: 10px 14px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="VYPER JAPAN">
+        <img src="https://cdn.prod.website-files.com/6061972357274a19ed887ecf/6061972357274a9cb6888020_vyper%20black.png" alt="VYPER">
+        <span class="brand-copy">
+          <strong>株式会社VYPER JAPAN</strong>
+          <span>VYPER JAPAN LTD.</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="index.html#brands">取扱ブランド</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Privacy Policy</div>
+        <h1>個人情報保護方針</h1>
+        <p class="lead">株式会社VYPER JAPANは、取得した個人情報の重要性を認識し、個人情報の保護に関する法令等を遵守するとともに、適切な取得、利用、管理および保護に努めます。</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="policy-grid">
+          <article class="policy-card">
+            <h2>個人情報の取得</h2>
+            <p>株式会社VYPER JAPANは、お問い合わせ対応、取引先との連絡、サービス提供、採用活動その他の業務遂行に必要な範囲で、氏名、会社名、住所、電話番号、メールアドレス等の個人情報を適正かつ公正な手段により取得します。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>利用目的</h2>
+            <p>取得した個人情報は、以下の目的の範囲内で利用します。</p>
+            <ul>
+              <li>お問い合わせへの回答およびご連絡のため</li>
+              <li>お取引先との商談、契約履行、業務上の連絡のため</li>
+              <li>サービスの提供、改善、品質向上のため</li>
+              <li>採用活動に関するご案内および選考のため</li>
+              <li>法令等にもとづく対応のため</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <h2>第三者提供</h2>
+            <p>株式会社VYPER JAPANは、法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供しません。ただし、利用目的の達成に必要な範囲で業務委託先に取り扱いを委託する場合があります。この場合、委託先に対し適切な監督を行います。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>安全管理措置</h2>
+            <p>株式会社VYPER JAPANは、個人情報への不正アクセス、漏えい、滅失またはき損の防止その他の安全管理のため、組織的、人的、物理的および技術的な措置を講じ、継続的な見直しと改善に努めます。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>開示等の請求</h2>
+            <p>株式会社VYPER JAPANは、ご本人から自己の個人情報について、開示、訂正、追加、削除、利用停止等の請求があった場合には、法令に従い、本人確認を行ったうえで適切に対応します。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>お問い合わせ窓口</h2>
+            <p>本方針および個人情報の取扱いに関するお問い合わせは、下記窓口までご連絡ください。</p>
+            <ul>
+              <li>株式会社VYPER JAPAN</li>
+              <li>〒992-0022 山形県米沢市花沢町1021-1</li>
+              <li>Email: info@vtj.co.jp</li>
+              <li>Phone: 0238-49-7294</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="contact-card">
+          <strong>事業者情報</strong>
+          <p>会社名: 株式会社VYPER JAPAN</p>
+          <p>代表者: 鈴木 敬之 (Takayuki Suzuki)</p>
+          <p>所在地: 〒992-0022 山形県米沢市花沢町1021-1</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links" style="justify-content:center;gap:14px 32px;">
+        <a href="index.html#services">サービス</a>
+        <a href="index.html#brands">取扱ブランド</a>
+        <a href="company.html">会社概要</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-bottom" style="justify-content:center;">
+        <span>&copy; 2026 株式会社VYPER JAPAN. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const navToggle = document.querySelector(".nav-toggle");
+    const siteNav = document.querySelector(".site-nav");
+    const header = document.querySelector(".site-header");
+
+    const closeMenu = () => {
+      body.classList.remove("menu-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = body.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!body.classList.contains("menu-open")) {
+        return;
+      }
+      if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    const updateHeader = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  </script>
+</body>
+</html>
