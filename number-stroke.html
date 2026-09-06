@@ -2,208 +2,151 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>すうじのかきじゅん</title>
+<meta name="theme-color" content="#f5f4fc">
+<meta name="robots" content="noindex,nofollow">
+<title>すうじの かきじゅん｜お手本つき v5</title>
 <style>
-:root{--purple:#5b4cf0;--bg:#f5f6fb;--ink:#222;--muted:#8a8a96;--guide:#d9dae2}
+:root{--purple:#6151dc;--ink:#28253d;--bg:#f5f4fc;--vh:100dvh}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink);overscroll-behavior:none}
-body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-.app{max-width:680px;margin:auto;padding:14px}
-h1{font-size:24px;margin:2px 0 12px}
-.picker{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
-button{appearance:none;border:0;border-radius:14px;background:#fff;padding:11px 6px;font-size:20px;font-weight:700;box-shadow:0 2px 12px #00000010;color:#222}
-button.active{background:var(--purple);color:#fff}
-.card{background:#fff;border-radius:22px;padding:12px;box-shadow:0 8px 28px #0000000d}
-.board{position:relative;width:100%;aspect-ratio:1/1;max-height:65vh;overflow:hidden;border-radius:18px;background:linear-gradient(#0000 49.7%,#ececf3 49.7%,#ececf3 50.3%,#0000 50.3%),linear-gradient(90deg,#0000 49.7%,#ececf3 49.7%,#ececf3 50.3%,#0000 50.3%),#fff;touch-action:none;-webkit-user-select:none;user-select:none}
-.guide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Arial Rounded MT Bold","Helvetica Neue",Arial,sans-serif;font-size:min(70vw,430px);font-weight:800;line-height:1;color:var(--guide);pointer-events:none;transform:translateY(-1%)}
-.start{position:absolute;left:14px;top:14px;background:#fff;border:2px solid var(--purple);color:var(--purple);border-radius:999px;padding:6px 10px;font-size:14px;font-weight:800;pointer-events:none;box-shadow:0 3px 12px #0001}
-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-.actions button:first-child{background:var(--purple);color:white}
-.msg{text-align:center;font-size:18px;font-weight:800;min-height:30px;margin-top:10px}
-.status{text-align:center;font-size:12px;color:var(--muted);margin-top:3px}
+html{width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
+body{position:fixed;inset:0;margin:0;overflow:hidden;overscroll-behavior:none;touch-action:none;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif;-webkit-user-select:none;user-select:none}
+main{height:100%;height:var(--vh);width:100%;max-width:620px;margin:auto;padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));display:flex;flex-direction:column;gap:9px;overflow:hidden}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0}h1{font-size:20px;margin:0;line-height:1.5}.version{background:#e9e6fa;color:#5942b3;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:700;white-space:nowrap}
+button{font:inherit;font-weight:700;border:0;border-radius:13px;min-height:44px;cursor:pointer;touch-action:manipulation;color:var(--ink);background:#fff;box-shadow:0 2px 5px #2720460a}button:focus-visible{outline:3px solid #f4a132;outline-offset:2px}button:active{transform:scale(.97)}
+#picker{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;flex-shrink:0}#picker button{font-size:24px;padding:4px}#picker button[aria-pressed=true]{color:white;background:var(--purple)}
+.lesson{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-shrink:0;padding:0 3px}.lesson strong{font-size:16px}.lesson span{font-size:12px;color:#655f7d}.slow{font-size:13px;display:flex;align-items:center;gap:5px;min-height:30px;white-space:nowrap}.slow input{width:18px;height:18px;accent-color:var(--purple)}
+#board{position:relative;flex:1;min-height:0;width:100%;overflow:hidden;border:2px solid #e6e2f4;border-radius:20px;background:#fff;touch-action:none;-webkit-touch-callout:none}
+#guide,canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}#guide{pointer-events:none}canvas{z-index:2}
+.actions{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:7px;flex-shrink:0}.actions button{font-size:18px;min-height:50px}.actions .primary{background:var(--purple);color:white}.actions .next{background:#e6f5f1;color:#266c61}
+#message{margin:0;min-height:44px;font-size:16px;line-height:1.4;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;flex-shrink:0}.footer{text-align:center;font-size:11px;color:#756f87;flex-shrink:0;line-height:1.4}
+#error{display:none;position:fixed;inset:15% 7%;z-index:10;background:white;border:2px solid #d6684b;padding:20px;border-radius:16px;overflow:auto;touch-action:auto}noscript{position:fixed;inset:0;z-index:20;background:white;padding:35px}
+@media(max-width:370px){h1{font-size:17px}.version{font-size:10px}main{gap:6px}.actions button{font-size:16px}}
+@media(max-height:610px){main{gap:5px;padding-top:6px;padding-bottom:max(6px,env(safe-area-inset-bottom))}h1{font-size:17px}#picker button{min-height:37px;font-size:21px}.actions button{min-height:44px}#message{min-height:35px;font-size:14px}.footer{font-size:10px}}
+@media(orientation:landscape) and (max-height:520px){main{max-width:100%;display:grid;grid-template-columns:minmax(210px,36%) minmax(0,1fr);grid-template-rows:auto auto auto 1fr auto;gap:7px 12px}header{grid-column:1}#picker{grid-column:1}.lesson{grid-column:1}.actions{grid-column:1;align-self:end}#message{grid-column:1;font-size:13px;min-height:32px}#board{grid-column:2;grid-row:1/6;width:100%;height:100%}.footer{display:none}}
 </style>
 </head>
 <body>
-<div class="app">
-  <h1>すうじの かきじゅん れんしゅう</h1>
-  <div class="picker" id="picker"></div>
-  <div class="card">
-    <div class="board" id="board">
-      <div class="guide" id="guide">1</div>
-      <div class="start">① ここから</div>
-      <canvas id="canvas" aria-label="数字を書く場所"></canvas>
-    </div>
-    <div class="actions">
-      <button id="clear">けす</button>
-      <button id="next">つぎのすうじ</button>
-    </div>
-    <div class="msg" id="msg">うすい数字の上を指でなぞってね</div>
-    <div class="status" id="status">入力を準備しています…</div>
-  </div>
+<main id="app" data-version="5">
+<header><h1>すうじの かきじゅん</h1><span class="version">v5・お手本つき</span></header>
+<nav id="picker" aria-label="れんしゅうする すうじ">
+<button data-n="1" aria-pressed="true">1</button><button data-n="2" aria-pressed="false">2</button><button data-n="3" aria-pressed="false">3</button><button data-n="4" aria-pressed="false">4</button><button data-n="5" aria-pressed="false">5</button><button data-n="6" aria-pressed="false">6</button><button data-n="7" aria-pressed="false">7</button><button data-n="8" aria-pressed="false">8</button><button data-n="9" aria-pressed="false">9</button><button data-n="0" aria-pressed="false">0</button>
+</nav>
+<div class="lesson"><div><strong id="digitTitle">1 の お手本</strong> <span id="count">1 かく</span></div><label class="slow"><input id="slow" type="checkbox">ゆっくり</label></div>
+<div id="board">
+<svg id="guide" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-label="数字と書き順のお手本"><path d="M50 4V96M4 50H96" stroke="#edeaf5" stroke-width=".4" stroke-dasharray="1 1" fill="none"/><g id="tracks"></g><g id="demoLines"></g><g id="hints"></g><g id="pen" style="display:none"><circle r="4.5" fill="#ffbd69" opacity=".4"/><circle r="2.3" fill="#ee9023" stroke="#fff" stroke-width=".8"/></g></svg>
+<canvas id="canvas" aria-label="ここに指で数字を書きます"></canvas>
 </div>
+<div class="actions"><button id="demo" class="primary">▶ お手本</button><button id="clear">けす</button><button id="next" class="next">つぎ →</button></div>
+<p id="message" role="status" aria-live="polite">「お手本」を おしてみよう</p>
+<div class="footer" id="status">読み込み中…</div>
+</main>
+<div id="error" role="alert"></div>
+<noscript>この画面ではプログラムが動いていません。公開URLをSafariなどのブラウザで開いてください。</noscript>
 <script>
-(() => {
-  'use strict';
-  const canvas = document.getElementById('canvas');
-  const board = document.getElementById('board');
-  const guide = document.getElementById('guide');
-  const picker = document.getElementById('picker');
-  const msg = document.getElementById('msg');
-  const status = document.getElementById('status');
-  const ctx = canvas.getContext('2d');
-
-  let currentNumber = 1;
-  let drawing = false;
-  let strokes = [];
-  let currentStroke = null;
-  let last = null;
-  let activePointer = null;
-  const dpr = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
-
-  for (let i = 0; i <= 9; i++) {
-    const b = document.createElement('button');
-    b.textContent = String(i);
-    b.dataset.n = String(i);
-    if (i === 1) b.classList.add('active');
-    b.addEventListener('click', () => selectNumber(i));
-    picker.appendChild(b);
-  }
-
-  function selectNumber(n) {
-    currentNumber = n;
-    guide.textContent = String(n);
-    strokes = [];
-    redraw();
-    [...picker.children].forEach(b => b.classList.toggle('active', Number(b.dataset.n) === n));
-    msg.textContent = 'うすい数字の上を指でなぞってね';
-  }
-
-  function fitCanvas() {
-    const r = canvas.getBoundingClientRect();
-    if (!r.width || !r.height) return;
-    canvas.width = Math.round(r.width * dpr);
-    canvas.height = Math.round(r.height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    redraw();
-  }
-
-  function pointFromClient(clientX, clientY) {
-    const r = canvas.getBoundingClientRect();
-    return {x: clientX - r.left, y: clientY - r.top};
-  }
-
-  function begin(p) {
-    drawing = true;
-    currentStroke = [p];
-    strokes.push(currentStroke);
-    last = p;
-    drawDot(p);
-    msg.textContent = 'そのまま書いてね';
-  }
-
-  function extend(p) {
-    if (!drawing || !last || !currentStroke) return;
-    currentStroke.push(p);
-    ctx.strokeStyle = '#5b4cf0';
-    ctx.lineWidth = 12;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.beginPath();
-    ctx.moveTo(last.x, last.y);
-    ctx.lineTo(p.x, p.y);
-    ctx.stroke();
-    last = p;
-  }
-
-  function finish() {
-    if (!drawing) return;
-    drawing = false;
-    currentStroke = null;
-    last = null;
-    msg.textContent = 'いいね！ つづけて書いてみよう';
-  }
-
-  function drawDot(p) {
-    ctx.fillStyle = '#5b4cf0';
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  function redraw() {
-    const r = canvas.getBoundingClientRect();
-    ctx.clearRect(0, 0, r.width, r.height);
-    ctx.strokeStyle = '#5b4cf0';
-    ctx.fillStyle = '#5b4cf0';
-    ctx.lineWidth = 12;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    for (const s of strokes) {
-      if (!s.length) continue;
-      if (s.length === 1) { drawDot(s[0]); continue; }
-      ctx.beginPath();
-      ctx.moveTo(s[0].x, s[0].y);
-      for (let i = 1; i < s.length; i++) ctx.lineTo(s[i].x, s[i].y);
-      ctx.stroke();
-    }
-  }
-
-  if ('PointerEvent' in window) {
-    canvas.addEventListener('pointerdown', e => {
-      e.preventDefault();
-      activePointer = e.pointerId;
-      try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
-      begin(pointFromClient(e.clientX, e.clientY));
-    }, {passive:false});
-    canvas.addEventListener('pointermove', e => {
-      if (!drawing || e.pointerId !== activePointer) return;
-      e.preventDefault();
-      extend(pointFromClient(e.clientX, e.clientY));
-    }, {passive:false});
-    const pointerEnd = e => {
-      if (activePointer !== null && e.pointerId !== activePointer) return;
-      e.preventDefault();
-      activePointer = null;
-      finish();
-    };
-    canvas.addEventListener('pointerup', pointerEnd, {passive:false});
-    canvas.addEventListener('pointercancel', pointerEnd, {passive:false});
-    status.textContent = '入力準備OK（指・Apple Pencil対応）';
-  } else {
-    canvas.addEventListener('touchstart', e => {
-      e.preventDefault();
-      const t = e.changedTouches[0];
-      begin(pointFromClient(t.clientX, t.clientY));
-    }, {passive:false});
-    canvas.addEventListener('touchmove', e => {
-      e.preventDefault();
-      const t = e.changedTouches[0];
-      extend(pointFromClient(t.clientX, t.clientY));
-    }, {passive:false});
-    canvas.addEventListener('touchend', e => { e.preventDefault(); finish(); }, {passive:false});
-    canvas.addEventListener('mousedown', e => { e.preventDefault(); begin(pointFromClient(e.clientX, e.clientY)); });
-    window.addEventListener('mousemove', e => { if (drawing) extend(pointFromClient(e.clientX, e.clientY)); });
-    window.addEventListener('mouseup', finish);
-    status.textContent = '入力準備OK';
-  }
-
-  document.getElementById('clear').addEventListener('click', () => {
-    strokes = [];
-    redraw();
-    msg.textContent = '消したよ。もう一度なぞってみよう';
-  });
-
-  document.getElementById('next').addEventListener('click', () => {
-    selectNumber((currentNumber + 1) % 10);
-  });
-
-  if ('ResizeObserver' in window) new ResizeObserver(fitCanvas).observe(board);
-  window.addEventListener('resize', fitCanvas);
-  requestAnimationFrame(fitCanvas);
-  setTimeout(fitCanvas, 150);
+(function(){
+'use strict';
+// Original geometric paths. 3 and 8 are continuous; 4, 5 and 7 use two strokes.
+// Instructional model only: regional/classroom forms may differ; no automatic grading.
+const DATA={
+0:{d:['M53 17 C22 12 22 86 50 84 C79 86 80 12 53 17'],text:['うえから ひだりへ。ぐるっと ひとまわり。']},
+1:{d:['M50 17 L50 83'],text:['うえから したへ、まっすぐ。']},
+2:{d:['M30 31 C32 9 72 11 71 32 C71 47 47 58 29 81 L73 81'],text:['まるく まがって、ひだりしたへ。さいごは みぎへ。']},
+3:{d:['M30 22 C48 10 69 17 69 32 C69 42 59 48 46 49 C64 47 74 59 71 70 C67 90 37 88 28 78'],text:['うえを まるく。つづけて したも まるく。']},
+4:{d:['M56 17 L30 59 L75 59','M64 17 L64 84'],text:['ななめに おりて、そのまま みぎへ。','うえから したへ、まっすぐ。'],badge:[[-10,-6],[10,-6]]},
+5:{d:['M38 18 L34 48 C47 41 69 43 70 62 C75 83 43 91 29 77','M38 18 L70 18'],text:['したへ おりて、まるく まがる。','うえの よこせんを、ひだりから みぎへ。'],badge:[[-10,8],[5,-8]]},
+6:{d:['M65 17 C43 20 29 40 29 61 C29 90 71 92 71 66 C71 44 40 44 29 61'],text:['うえから おりて、したで まるを つくる。']},
+7:{d:['M29 18 L29 33','M29 19 L71 19 L44 84'],text:['ひだりの みじかい たてせん。','みぎへ、つづけて ななめ したへ。'],badge:[[-10,7],[7,-8]]},
+8:{d:['M65 24 C57 13 38 15 34 29 C28 48 72 50 71 70 C70 89 30 90 29 70 C27 50 80 44 65 24'],text:['みぎうえから ひだりへ。Sのように、はなさず もどる。']},
+9:{d:['M69 36 C69 11 30 11 29 35 C28 61 66 63 69 36 C71 51 57 74 41 83'],text:['みぎうえから まるを かいて、そのまま したへ。']}
+};
+const $=id=>document.getElementById(id), ns='http://www.w3.org/2000/svg';
+const canvas=$('canvas'),ctx=canvas.getContext('2d'),board=$('board'),demoButton=$('demo');
+let digit=1,strokes=[],current=null,activeId=null,mouse=false,touchId=null;
+let samples=[],demoPaths=[],running=false,token=0,raf=0,frame=0,scale=1,ox=0,oy=0;
+function svg(tag,attrs){const el=document.createElementNS(ns,tag);Object.keys(attrs).forEach(k=>el.setAttribute(k,attrs[k]));return el;}
+function message(t){$('message').textContent=t;}
+function prevent(e){if(e.cancelable)e.preventDefault();}
+function stopInput(){activeId=null;touchId=null;mouse=false;current=null;}
+function stopDemo(){token++;cancelAnimationFrame(raf);raf=0;running=false;$('pen').style.display='none';demoButton.textContent='▶ お手本';demoButton.setAttribute('aria-pressed','false');board.dataset.demo='idle';}
+function resetDemoLines(){demoPaths.forEach(p=>p.setAttribute('stroke-dashoffset',p.getTotalLength()));}
+function loadDigit(n){stopDemo();stopInput();digit=n;strokes=[];const data=DATA[n];
+ $('tracks').replaceChildren();$('demoLines').replaceChildren();$('hints').replaceChildren();samples=[];demoPaths=[];
+ data.d.forEach((d,i)=>{
+  const base=svg('path',{d,fill:'none',stroke:'#e0dced','stroke-width':6,'stroke-linecap':'round','stroke-linejoin':'round'});$('tracks').appendChild(base);samples.push(base);
+  $('tracks').appendChild(svg('path',{d,fill:'none',stroke:'#aaa1c7','stroke-width':.6,'stroke-dasharray':'1.3 2','stroke-linecap':'round'}));
+  const line=svg('path',{d,fill:'none',stroke:i===0?'#8b79ef':'#26a493','stroke-width':3,'stroke-linecap':'round','stroke-linejoin':'round'});$('demoLines').appendChild(line);demoPaths.push(line);
+  const len=line.getTotalLength();line.setAttribute('stroke-dasharray',len+' '+len);line.setAttribute('stroke-dashoffset',len);
+  const start=base.getPointAtLength(0),p=base.getPointAtLength(Math.min(5,base.getTotalLength())),q=base.getPointAtLength(Math.min(10,base.getTotalLength())),a=Math.atan2(q.y-p.y,q.x-p.x);
+  const off=data.badge?data.badge[i]:[-9,-7],bx=Math.max(6,Math.min(94,start.x+off[0])),by=Math.max(6,Math.min(94,start.y+off[1]));
+  $('hints').appendChild(svg('circle',{cx:start.x,cy:start.y,r:1.4,fill:'#ed9635'}));
+  $('hints').appendChild(svg('circle',{cx:bx,cy:by,r:4.4,fill:'#fff',stroke:'#8f82b9','stroke-width':.5}));
+  const t=svg('text',{x:bx,y:by+1.5,'text-anchor':'middle','font-size':4.5,'font-weight':700,fill:'#6151dc'});t.textContent=i+1;$('hints').appendChild(t);
+  const x=q.x-2.3*Math.cos(a-.55),y=q.y-2.3*Math.sin(a-.55),xx=q.x-2.3*Math.cos(a+.55),yy=q.y-2.3*Math.sin(a+.55);
+  $('hints').appendChild(svg('path',{d:'M'+p.x+' '+p.y+'L'+q.x+' '+q.y+'M'+x+' '+y+'L'+q.x+' '+q.y+'L'+xx+' '+yy,fill:'none',stroke:'#8f82b9','stroke-width':.85,'stroke-linecap':'round','stroke-linejoin':'round'}));
+ });
+ document.querySelectorAll('[data-n]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.n)===n)));
+ $('digitTitle').textContent=n+' の お手本';$('count').textContent=data.d.length+' かく';board.dataset.digit=n;
+ message('「お手本」を おしてみよう');draw();
+}
+function fit(){const r=canvas.getBoundingClientRect();if(!r.width||!r.height)return;const dpr=Math.min(3,window.devicePixelRatio||1);
+ canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+ scale=Math.min(r.width,r.height)/100;ox=(r.width-scale*100)/2;oy=(r.height-scale*100)/2;draw();}
+function draw(){frame=0;const r=canvas.getBoundingClientRect();ctx.clearRect(0,0,r.width,r.height);ctx.save();ctx.translate(ox,oy);ctx.scale(scale,scale);ctx.strokeStyle='#6151dc';ctx.fillStyle='#6151dc';ctx.lineWidth=2.8;ctx.lineCap='round';ctx.lineJoin='round';
+ for(const st of strokes){if(!st.length)continue;ctx.beginPath();if(st.length===1){ctx.arc(st[0].x,st[0].y,1.4,0,Math.PI*2);ctx.fill();}else{ctx.moveTo(st[0].x,st[0].y);for(let i=1;i<st.length;i++)ctx.lineTo(st[i].x,st[i].y);ctx.stroke();}}
+ ctx.restore();canvas.dataset.strokes=strokes.length;}
+function queueDraw(){if(!frame)frame=requestAnimationFrame(draw);}
+function position(x,y){const r=canvas.getBoundingClientRect();return{x:(x-r.left-ox)/scale,y:(y-r.top-oy)/scale};}
+function begin(x,y){if(running)return false;resetDemoLines();current=[position(x,y)];strokes.push(current);message('そのまま なぞってね');draw();return true;}
+function move(x,y){if(!current)return;const p=position(x,y),last=current[current.length-1];if(Math.hypot(p.x-last.x,p.y-last.y)>.1){current.push(p);queueDraw();}}
+function finish(){if(current){current=null;draw();message('お手本と くらべてみよう');}}
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+function movePen(path,len){const p=path.getPointAtLength(len);$('pen').setAttribute('transform','translate('+p.x+' '+p.y+')');}
+async function play(){if(running){stopDemo();message('とめたよ。「お手本」で はじめから。');return;}
+ stopInput();stopDemo();const id=token;running=true;board.dataset.demo='playing';demoButton.textContent='■ とめる';demoButton.setAttribute('aria-pressed','true');strokes=[];draw();resetDemoLines();
+ const data=DATA[digit],paths=demoPaths.slice(),factor=$('slow').checked?1.8:1;
+ for(let i=0;i<paths.length;i++){
+  if(id!==token)return;const path=paths[i],len=path.getTotalLength();board.dataset.demoStroke=String(i+1);
+  message((i+1)+' かくめ：'+data.text[i]);$('pen').style.display='';movePen(path,0);
+  await wait(360*factor);if(id!==token)return;
+  const start=performance.now(),duration=Math.max(1000,len*16)*factor;
+  await new Promise(resolve=>{function tick(now){if(id!==token){resolve();return;}const f=Math.min(1,(now-start)/duration);path.setAttribute('stroke-dashoffset',len*(1-f));movePen(path,len*f);if(f<1)raf=requestAnimationFrame(tick);else{raf=0;resolve();}}raf=requestAnimationFrame(tick);});
+  if(id!==token)return;$('pen').style.display='none';
+  if(i<paths.length-1){message('いちど ゆびを はなすよ');await wait(700*factor);}
+ }
+ if(id!==token)return;running=false;board.dataset.demo='done';demoButton.textContent='▶ お手本';demoButton.setAttribute('aria-pressed','false');message('つぎは じぶんで！ オレンジの てんから。');
+}
+// Lock the document, not just the drawing surface; never cancel button clicks.
+document.addEventListener('touchmove',prevent,{passive:false,capture:true});
+canvas.addEventListener('touchstart',prevent,{passive:false});
+canvas.addEventListener('contextmenu',prevent);
+document.addEventListener('gesturestart',prevent,{passive:false});
+document.addEventListener('gesturechange',prevent,{passive:false});
+document.addEventListener('wheel',prevent,{passive:false});
+if('PointerEvent' in window){
+ canvas.addEventListener('pointerdown',e=>{prevent(e);if(activeId!==null||running||(e.pointerType==='mouse'&&e.button!==0))return;if(begin(e.clientX,e.clientY)){activeId=e.pointerId;try{canvas.setPointerCapture(e.pointerId);}catch(_){}}},{passive:false});
+ canvas.addEventListener('pointermove',e=>{if(e.pointerId!==activeId)return;prevent(e);move(e.clientX,e.clientY);},{passive:false});
+ const up=e=>{if(e.pointerId!==activeId)return;prevent(e);if(e.type==='pointerup')move(e.clientX,e.clientY);activeId=null;finish();};
+ canvas.addEventListener('pointerup',up,{passive:false});canvas.addEventListener('pointercancel',up,{passive:false});canvas.addEventListener('lostpointercapture',up);
+}else{
+ canvas.addEventListener('touchstart',e=>{prevent(e);if(touchId!==null||running)return;const t=e.changedTouches[0];if(t&&begin(t.clientX,t.clientY))touchId=t.identifier;},{passive:false});
+ canvas.addEventListener('touchmove',e=>{prevent(e);for(const t of e.changedTouches)if(t.identifier===touchId)move(t.clientX,t.clientY);},{passive:false});
+ const endTouch=e=>{prevent(e);for(const t of e.changedTouches)if(t.identifier===touchId){touchId=null;finish();}};
+ canvas.addEventListener('touchend',endTouch,{passive:false});canvas.addEventListener('touchcancel',endTouch,{passive:false});
+ canvas.addEventListener('mousedown',e=>{if(e.button||touchId!==null)return;prevent(e);mouse=begin(e.clientX,e.clientY);});window.addEventListener('mousemove',e=>{if(mouse)move(e.clientX,e.clientY);});window.addEventListener('mouseup',()=>{if(mouse){mouse=false;finish();}});
+}
+document.querySelectorAll('[data-n]').forEach(b=>b.addEventListener('click',()=>loadDigit(Number(b.dataset.n))));
+demoButton.addEventListener('click',()=>play().catch(report));
+$('clear').addEventListener('click',()=>{stopDemo();stopInput();strokes=[];resetDemoLines();draw();message('けしたよ。もういちど かいてみよう');});
+$('next').addEventListener('click',()=>loadDigit((digit+1)%10));
+window.addEventListener('blur',()=>{stopInput();stopDemo();});
+function viewport(){const h=window.visualViewport?window.visualViewport.height:window.innerHeight;document.documentElement.style.setProperty('--vh',h+'px');requestAnimationFrame(fit);}
+window.addEventListener('resize',viewport);if(window.visualViewport)window.visualViewport.addEventListener('resize',viewport);
+if('ResizeObserver' in window)new ResizeObserver(fit).observe(board);
+function report(e){stopDemo();$('error').style.display='block';$('error').textContent='読み込みに問題がありました。ページを開き直してください。 '+String(e&&e.message||e);}
+window.addEventListener('error',e=>report(e.error||e.message));
+loadDigit(1);viewport();$('status').textContent='v5｜スクロール固定・なぞり書き（自動採点なし）';
 })();
 </script>
 </body>
