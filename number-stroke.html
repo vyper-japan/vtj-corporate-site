@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>すうじのかきじゅん</title>
+<style>
+:root{--purple:#5b4cf0;--bg:#f5f6fb;--ink:#222;--muted:#8a8a96;--guide:#d9dae2}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;color:var(--ink);overscroll-behavior:none}
+body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.app{max-width:680px;margin:auto;padding:14px}
+h1{font-size:24px;margin:2px 0 12px}
+.picker{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
+button{appearance:none;border:0;border-radius:14px;background:#fff;padding:11px 6px;font-size:20px;font-weight:700;box-shadow:0 2px 12px #00000010;color:#222}
+button.active{background:var(--purple);color:#fff}
+.card{background:#fff;border-radius:22px;padding:12px;box-shadow:0 8px 28px #0000000d}
+.board{position:relative;width:100%;aspect-ratio:1/1;max-height:65vh;overflow:hidden;border-radius:18px;background:linear-gradient(#0000 49.7%,#ececf3 49.7%,#ececf3 50.3%,#0000 50.3%),linear-gradient(90deg,#0000 49.7%,#ececf3 49.7%,#ececf3 50.3%,#0000 50.3%),#fff;touch-action:none;-webkit-user-select:none;user-select:none}
+.guide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:"Arial Rounded MT Bold","Helvetica Neue",Arial,sans-serif;font-size:min(70vw,430px);font-weight:800;line-height:1;color:var(--guide);pointer-events:none;transform:translateY(-1%)}
+.start{position:absolute;left:14px;top:14px;background:#fff;border:2px solid var(--purple);color:var(--purple);border-radius:999px;padding:6px 10px;font-size:14px;font-weight:800;pointer-events:none;box-shadow:0 3px 12px #0001}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.actions button:first-child{background:var(--purple);color:white}
+.msg{text-align:center;font-size:18px;font-weight:800;min-height:30px;margin-top:10px}
+.status{text-align:center;font-size:12px;color:var(--muted);margin-top:3px}
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>すうじの かきじゅん れんしゅう</h1>
+  <div class="picker" id="picker"></div>
+  <div class="card">
+    <div class="board" id="board">
+      <div class="guide" id="guide">1</div>
+      <div class="start">① ここから</div>
+      <canvas id="canvas" aria-label="数字を書く場所"></canvas>
+    </div>
+    <div class="actions">
+      <button id="clear">けす</button>
+      <button id="next">つぎのすうじ</button>
+    </div>
+    <div class="msg" id="msg">うすい数字の上を指でなぞってね</div>
+    <div class="status" id="status">入力を準備しています…</div>
+  </div>
+</div>
+<script>
+(() => {
+  'use strict';
+  const canvas = document.getElementById('canvas');
+  const board = document.getElementById('board');
+  const guide = document.getElementById('guide');
+  const picker = document.getElementById('picker');
+  const msg = document.getElementById('msg');
+  const status = document.getElementById('status');
+  const ctx = canvas.getContext('2d');
+
+  let currentNumber = 1;
+  let drawing = false;
+  let strokes = [];
+  let currentStroke = null;
+  let last = null;
+  let activePointer = null;
+  const dpr = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
+
+  for (let i = 0; i <= 9; i++) {
+    const b = document.createElement('button');
+    b.textContent = String(i);
+    b.dataset.n = String(i);
+    if (i === 1) b.classList.add('active');
+    b.addEventListener('click', () => selectNumber(i));
+    picker.appendChild(b);
+  }
+
+  function selectNumber(n) {
+    currentNumber = n;
+    guide.textContent = String(n);
+    strokes = [];
+    redraw();
+    [...picker.children].forEach(b => b.classList.toggle('active', Number(b.dataset.n) === n));
+    msg.textContent = 'うすい数字の上を指でなぞってね';
+  }
+
+  function fitCanvas() {
+    const r = canvas.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    canvas.width = Math.round(r.width * dpr);
+    canvas.height = Math.round(r.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    redraw();
+  }
+
+  function pointFromClient(clientX, clientY) {
+    const r = canvas.getBoundingClientRect();
+    return {x: clientX - r.left, y: clientY - r.top};
+  }
+
+  function begin(p) {
+    drawing = true;
+    currentStroke = [p];
+    strokes.push(currentStroke);
+    last = p;
+    drawDot(p);
+    msg.textContent = 'そのまま書いてね';
+  }
+
+  function extend(p) {
+    if (!drawing || !last || !currentStroke) return;
+    currentStroke.push(p);
+    ctx.strokeStyle = '#5b4cf0';
+    ctx.lineWidth = 12;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(last.x, last.y);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    last = p;
+  }
+
+  function finish() {
+    if (!drawing) return;
+    drawing = false;
+    currentStroke = null;
+    last = null;
+    msg.textContent = 'いいね！ つづけて書いてみよう';
+  }
+
+  function drawDot(p) {
+    ctx.fillStyle = '#5b4cf0';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  function redraw() {
+    const r = canvas.getBoundingClientRect();
+    ctx.clearRect(0, 0, r.width, r.height);
+    ctx.strokeStyle = '#5b4cf0';
+    ctx.fillStyle = '#5b4cf0';
+    ctx.lineWidth = 12;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    for (const s of strokes) {
+      if (!s.length) continue;
+      if (s.length === 1) { drawDot(s[0]); continue; }
+      ctx.beginPath();
+      ctx.moveTo(s[0].x, s[0].y);
+      for (let i = 1; i < s.length; i++) ctx.lineTo(s[i].x, s[i].y);
+      ctx.stroke();
+    }
+  }
+
+  if ('PointerEvent' in window) {
+    canvas.addEventListener('pointerdown', e => {
+      e.preventDefault();
+      activePointer = e.pointerId;
+      try { canvas.setPointerCapture(e.pointerId); } catch (_) {}
+      begin(pointFromClient(e.clientX, e.clientY));
+    }, {passive:false});
+    canvas.addEventListener('pointermove', e => {
+      if (!drawing || e.pointerId !== activePointer) return;
+      e.preventDefault();
+      extend(pointFromClient(e.clientX, e.clientY));
+    }, {passive:false});
+    const pointerEnd = e => {
+      if (activePointer !== null && e.pointerId !== activePointer) return;
+      e.preventDefault();
+      activePointer = null;
+      finish();
+    };
+    canvas.addEventListener('pointerup', pointerEnd, {passive:false});
+    canvas.addEventListener('pointercancel', pointerEnd, {passive:false});
+    status.textContent = '入力準備OK（指・Apple Pencil対応）';
+  } else {
+    canvas.addEventListener('touchstart', e => {
+      e.preventDefault();
+      const t = e.changedTouches[0];
+      begin(pointFromClient(t.clientX, t.clientY));
+    }, {passive:false});
+    canvas.addEventListener('touchmove', e => {
+      e.preventDefault();
+      const t = e.changedTouches[0];
+      extend(pointFromClient(t.clientX, t.clientY));
+    }, {passive:false});
+    canvas.addEventListener('touchend', e => { e.preventDefault(); finish(); }, {passive:false});
+    canvas.addEventListener('mousedown', e => { e.preventDefault(); begin(pointFromClient(e.clientX, e.clientY)); });
+    window.addEventListener('mousemove', e => { if (drawing) extend(pointFromClient(e.clientX, e.clientY)); });
+    window.addEventListener('mouseup', finish);
+    status.textContent = '入力準備OK';
+  }
+
+  document.getElementById('clear').addEventListener('click', () => {
+    strokes = [];
+    redraw();
+    msg.textContent = '消したよ。もう一度なぞってみよう';
+  });
+
+  document.getElementById('next').addEventListener('click', () => {
+    selectNumber((currentNumber + 1) % 10);
+  });
+
+  if ('ResizeObserver' in window) new ResizeObserver(fitCanvas).observe(board);
+  window.addEventListener('resize', fitCanvas);
+  requestAnimationFrame(fitCanvas);
+  setTimeout(fitCanvas, 150);
+})();
+</script>
+</body>
+</html>
