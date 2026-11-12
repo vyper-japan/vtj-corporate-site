@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BISSELL JAPAN 第1期アンバサダー募集 応募規約 | 株式会社VYPER JAPAN</title>
+  <meta name="description" content="BISSELL JAPAN 第1期アンバサダー募集 応募規約">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VYPER JAPAN">
+  <meta property="og:title" content="BISSELL JAPAN 第1期アンバサダー募集 応募規約">
+  <meta property="og:description" content="BISSELL JAPAN 第1期アンバサダー募集 応募規約">
+  <meta property="og:url" content="https://vtj.co.jp/bissell-ambassador-terms.html">
+  <meta property="og:image" content="https://cdn.prod.website-files.com/6061972357274a19ed887ecf/6061972357274a9cb6888020_vyper%20black.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://vtj.co.jp/bissell-ambassador-terms.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/archive" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --body: #4a4a4a;
+      --line: #e5e7eb;
+      --line-strong: #d7dce1;
+      --accent: #ec483e;
+      --accent-dark: #cf392f;
+      --shadow: 0 18px 50px rgba(26, 26, 26, 0.08);
+      --shadow-soft: 0 12px 30px rgba(26, 26, 26, 0.05);
+      --radius: 24px;
+      --container: min(1040px, calc(100vw - 32px));
+      --header-height: 80px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--body);
+      background: var(--bg);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 8px 24px rgba(26, 26, 26, 0.08);
+      border-color: rgba(26, 26, 26, 0.06);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-height);
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 132px;
+      height: auto;
+    }
+
+    .brand-copy {
+      display: none;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      color: #707070;
+      font-size: 0.76rem;
+      white-space: nowrap;
+    }
+
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .nav-toggle span,
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      content: "";
+      transition: transform 0.2s ease;
+    }
+
+    .nav-toggle span::before {
+      transform: translateY(-6px);
+    }
+
+    .nav-toggle span::after {
+      transform: translateY(4px);
+    }
+
+    .site-nav {
+      position: fixed;
+      top: calc(var(--header-height) + 12px);
+      right: 16px;
+      left: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .site-nav ul {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .site-nav a {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      background: var(--bg-alt);
+      outline: none;
+    }
+
+    body.menu-open .site-nav {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    body.menu-open .nav-toggle span {
+      background: transparent;
+    }
+
+    body.menu-open .nav-toggle span::before {
+      transform: rotate(45deg);
+    }
+
+    body.menu-open .nav-toggle span::after {
+      transform: rotate(-45deg) translateY(-1px);
+    }
+
+    .hero {
+      padding: 84px 0 44px;
+      background:
+        radial-gradient(circle at top left, rgba(236, 72, 62, 0.08), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    h1, h2, .eyebrow {
+      font-family: 'Archive', 'Archivo', sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+    }
+
+    h2 {
+      font-size: clamp(1.45rem, 4vw, 2rem);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      font-size: 1.04rem;
+    }
+
+    .content {
+      padding: 0 0 88px;
+    }
+
+    .policy-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 36px;
+    }
+
+    .policy-card,
+    .contact-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .policy-card h2 {
+      margin-bottom: 14px;
+    }
+
+    .policy-card ul {
+      margin: 14px 0 0;
+      padding-left: 20px;
+    }
+
+    .policy-card li + li {
+      margin-top: 8px;
+    }
+
+    .contact-card {
+      margin-top: 24px;
+      background: var(--bg-alt);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .site-footer {
+      padding: 52px 0 28px;
+      color: rgba(255, 255, 255, 0.78);
+      background: #1a1a1a;
+    }
+
+    .footer-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .footer-brand img {
+      width: 132px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p,
+    .footer-links a,
+    .footer-social a,
+    .footer-bottom a {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-links,
+    .footer-social,
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+    }
+
+    .footer-links a:hover,
+    .footer-social a:hover,
+    .footer-bottom a:hover {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      margin-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.92rem;
+    }
+
+    @media (min-width: 720px) {
+      .brand-copy {
+        display: block;
+      }
+
+      .policy-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 980px) {
+      .nav-toggle {
+        display: none;
+      }
+
+      .site-nav {
+        position: static;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+      }
+
+      .site-nav ul {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .site-nav a {
+        padding: 10px 14px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="VYPER JAPAN">
+        <img src="https://cdn.prod.website-files.com/6061972357274a19ed887ecf/6061972357274a9cb6888020_vyper%20black.png" alt="VYPER">
+        <span class="brand-copy">
+          <strong>株式会社VYPER JAPAN</strong>
+          <span>VYPER JAPAN LTD.</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開く">
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="グローバルナビゲーション">
+        <ul>
+          <li><a href="index.html#services">サービス</a></li>
+          <li><a href="index.html#brands">取扱ブランド</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Terms</div>
+        <h1>BISSELL JAPAN 第1期アンバサダー募集 応募規約</h1>
+        <p class="lead">BISSELL JAPAN 第1期アンバサダー募集は、BISSELL 日本国内 正規販売代理店である株式会社VYPER JAPAN（以下「主催者」）が運営します。ご応募いただく方は、以下の内容をご確認ください。本企画への応募をもって、本規約に同意いただいたものとします。</p>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="container">
+        <div class="policy-grid">
+          <article class="policy-card">
+            <h2>1．募集概要</h2>
+            <ul>
+              <li>応募期間：2026年11月13日（金）～11月25日（水）</li>
+              <li>募集人数：10名～最大20名</li>
+              <li>対象商品：スポットクリーン ミニペットコードレス／スポットクリーン ミニホーム コードレス／スポットクリーン マキシホームコードレス</li>
+              <li>提供内容：対象商品の中から、ご希望の1台を無償提供します。</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <h2>2．応募条件</h2>
+            <p>以下のすべてに該当する方を対象とします。</p>
+            <ul>
+              <li>日本国内にお住まいの18歳以上の方</li>
+              <li>日本国内で商品を受け取れる方</li>
+              <li>ご自身のInstagram公開アカウントで、実際に商品を使用した感想を発信できる方</li>
+              <li>本規約に定める活動、連絡事項の確認、投稿・アンケート回答等の二次利用に同意いただける方</li>
+              <li>公式アカウントからのDMを受信できる方</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <h2>3．応募方法</h2>
+            <p>① BISSELL JAPAN公式Instagramアカウント「@bissell_japan」をフォローしてください。</p>
+            <p>② 募集投稿のコメント欄に、次の2点をご記入ください。</p>
+            <ul>
+              <li>使ってみたい商品（ミニペット／ミニホーム／マキシホーム）</li>
+              <li>大掃除で洗ってみたい布製品と、その理由</li>
+            </ul>
+            <p>フォローとコメントで応募完了となります。募集投稿をストーリーズでシェアし、「@bissell_japan」をメンションしていただいた方は、選考時に優遇します。シェアは任意であり、シェアをしなくてもご応募いただけます。シェアによる選出を保証するものではありません。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>4．選考・結果のご連絡</h2>
+            <p>応募内容等をもとに選考し、募集終了後、選出された方にのみ「@bissell_japan」からInstagramのDMでご連絡します。</p>
+            <p>ご案内する期限までに返信がない場合、応募条件を満たしていない場合、または商品の発送に必要な情報をご提供いただけない場合は、選出を取り消すことがあります。選考過程や選考理由に関する個別のお問い合わせにはお答えできません。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>5．アンバサダーの活動内容</h2>
+            <p>活動期間は3か月間です。活動開始日などの詳細は、選出された方へご案内します。</p>
+            <ul>
+              <li>提供商品をご自宅等で実際にご使用ください。</li>
+              <li>商品到着後20日以内に、ご自身のInstagram公開アカウントで、使用レビューを1件以上投稿してください。</li>
+              <li>活動期間中、月1回、計3回のアンケートにご回答ください。</li>
+              <li>活動に関するご案内をご確認のうえ、必要な連絡・回答にご協力ください。</li>
+            </ul>
+            <p>やむを得ない事情で投稿期限や活動への対応が難しくなった場合は、事前に事務局へご相談ください。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>6．活動中の連絡・LINEオープンチャット</h2>
+            <p>活動中の全体連絡、投稿に関するご案内、アンケートの配信、使い方の情報共有等は、原則として専用のLINEオープンチャットで行います。円滑な活動のため、選出された方には原則としてご参加をお願いします。</p>
+            <p>参加が難しい事情のある方は、参加確定前に事務局へご相談ください。個別の連絡方法を調整します。参加者同士の会話や交流への参加は任意ですが、活動に必要なお知らせの確認・回答にはご協力ください。</p>
+            <p>選考結果、配送先情報、その他の個別事項は、InstagramのDM等で個別にご連絡します。オープンチャット内に住所・電話番号等の個人情報を投稿しないでください。また、他の参加者の発言や画像を、本人の同意なく外部へ転載・公開することはお控えください。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>7．投稿時のお願い</h2>
+            <p>商品提供を受けた投稿であることが分かるよう、本文の分かりやすい位置に「PR」または「#PR」と、「BISSELL JAPANから商品提供を受けています」等の説明を明記してください。写真・動画・ストーリーズ等でも、閲覧者が商品提供の関係を認識できるように表示し、Instagramの規定に従って必要な設定を行ってください。</p>
+            <p>投稿には「@bissell_japan」をメンションしてください。ご感想は実際の使用体験に基づき、率直にお伝えください。好意的な評価を義務づけるものではありません。</p>
+            <p>商品の性能・効果に関する誤認を招く表現や、第三者の権利を侵害する内容は避けてください。事実と異なる情報や必要なPR表記の不足については、修正をお願いする場合があります。</p>
+            <p>写真・動画・音楽等は、本企画での投稿および第8項の二次利用に必要な権利を確認したものをご使用ください。他の方が写る場合は、掲載・二次利用について本人の同意を得てください。未成年の方が写る場合は、保護者の同意を得てください。</p>
+            <p>商品は取扱説明書に従って使用し、洗浄する布製品の素材・お手入れ表示をご確認ください。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>8．投稿・写真・動画・アンケート回答等の二次利用</h2>
+            <p>本企画に関連して投稿・提供いただいた写真、動画、文章、アンケート回答等について、主催者がBISSELLの紹介・販促を目的として、公式SNS、公式サイト、ECサイト、広告、販促物等に無償で掲載・利用することに同意いただきます。掲載時に、Instagramのアカウント名を表示する場合があります。</p>
+            <p>著作権は、投稿者その他の正当な権利者に帰属します。主催者に著作権を譲渡いただくものではありません。</p>
+            <p>掲載にあたり、内容の趣旨を損なわない範囲で、サイズ調整、トリミング、抜粋、字幕・説明文の追加等を行う場合があります。利用は活動期間終了後も継続する場合があります。掲載停止等のご希望がある場合は、事務局へご相談ください。</p>
+            <p>二次利用の際も、商品提供を受けたアンバサダーの投稿・感想であることが分かるように表示します。本企画に関係のない投稿や、オープンチャット内の発言を販促に利用する場合は、別途ご本人の同意を得ます。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>9．転売・譲渡の禁止</h2>
+            <p>提供商品は、ご本人による使用を目的としています。提供商品の転売・譲渡は禁止します。フリマアプリ、オークションサイト等への出品も禁止します。</p>
+            <p>アンバサダーとしての参加資格や商品提供を受ける権利を、第三者に譲渡することもできません。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>10．個人情報の取り扱い</h2>
+            <p>ご提供いただく個人情報は、応募受付、選考、結果連絡、商品発送、アンバサダー活動の運営、アンケート、お問い合わせ対応のために利用します。</p>
+            <p>業務の一部を委託する場合は、必要な範囲で委託先に情報を取り扱わせ、適切に管理します。法令に基づく場合等を除き、ご本人の同意なく第三者へ提供することはありません。</p>
+            <p>第8項に同意いただいた公開内容を除き、配送先の氏名・住所・電話番号等を販促物や参加者間で公開することはありません。本企画における個人情報の管理主体は株式会社VYPER JAPANとし、本規約および適用法令に従って取り扱います。</p>
+            <p>BISSELLの個人情報保護方針：</p>
+            <p><a href="https://www.bissell.jp/pages/privacy-policy" target="_blank" rel="noopener">https://www.bissell.jp/pages/privacy-policy</a></p>
+          </article>
+
+          <article class="policy-card">
+            <h2>11．応募の無効・活動の終了</h2>
+            <p>虚偽の申告、不正な応募、第三者へのなりすまし、転売・譲渡、本規約への重大な違反等が確認された場合は、応募・選出を無効とし、またはアンバサダー活動を終了させることがあります。</p>
+            <p>活動が難しくなった場合は、事務局へご相談ください。正当な理由なく活動や連絡が継続して行われない場合は、状況を確認したうえで、活動の終了について個別にご案内することがあります。</p>
+          </article>
+
+          <article class="policy-card">
+            <h2>12．その他</h2>
+            <ul>
+              <li>本企画への応募・活動に必要な通信費等は、応募者のご負担となります。</li>
+              <li>災害やシステム障害等のやむを得ない事情により、本企画の内容・日程を変更、または中止する場合があります。その際は、公式アカウント等でお知らせします。すでに参加が確定した方の活動条件を大きく変更する場合は、事前にご案内し、対応を協議します。</li>
+              <li>本企画はBISSELL JAPANが実施するもので、InstagramおよびMeta社による主催・協賛・運営ではありません。</li>
+            </ul>
+          </article>
+
+          <article class="policy-card">
+            <h2>13．お問い合わせ</h2>
+            <p>BISSELL JAPAN公式Instagram「@bissell_japan」のDMへご連絡ください。</p>
+            <p><a href="https://www.instagram.com/bissell_japan/" target="_blank" rel="noopener">https://www.instagram.com/bissell_japan/</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-links" style="justify-content:center;gap:14px 32px;">
+        <a href="index.html#services">サービス</a>
+        <a href="index.html#brands">取扱ブランド</a>
+        <a href="company.html">会社概要</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-bottom" style="justify-content:center;">
+        <span>&copy; 2026 株式会社VYPER JAPAN. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const body = document.body;
+    const navToggle = document.querySelector(".nav-toggle");
+    const siteNav = document.querySelector(".site-nav");
+    const header = document.querySelector(".site-header");
+
+    const closeMenu = () => {
+      body.classList.remove("menu-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = body.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!body.classList.contains("menu-open")) {
+        return;
+      }
+      if (!siteNav.contains(event.target) && !navToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    const updateHeader = () => {
+      header.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+  </script>
+</body>
+</html>
